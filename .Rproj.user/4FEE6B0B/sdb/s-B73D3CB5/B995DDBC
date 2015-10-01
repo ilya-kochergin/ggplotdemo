@@ -1,0 +1,18 @@
+{
+    "contents" : "qplot(Petal.Length, data=iris, geom=\"histogram\") ## Histogram\nqplot(Petal.Length, data=iris, geom=\"density\") ## Density plot\nd1 <-data.frame(movies[movies$Action==1, c(\"budget\", \"Short\",\n                                           \"year\")])\nd1$Type <- \"Animation\"\nd2 <-data.frame(movies[movies$Animation==1, c(\"budget\", \"Short\",\n                                              \"year\")])\nd2$Type <- \"Animation\"\nd3 <-data.frame(movies[movies$Comedy==1, c(\"budget\", \"Short\",\n                                           \"year\")])\nd3$Type <- \"Comedy\"\nd4 <-data.frame(movies[movies$Drama==1, c(\"budget\", \"Short\",\n                                          \"year\")])\nd4$Type <- \"Drama\"\nd5 <-data.frame(movies[movies$Documentary==1, c(\"budget\", \"Short\",\n                                                \"year\")])\nd5$Type <- \"Documentary\"\nd6 <-data.frame(movies[movies$Romance==1, c(\"budget\", \"Short\",\n                                            \"year\")])\nd6$Type <- \"Romance\"\nmyMovieData <- rbind(d1, d2, d3, d4, d5, d6)\nnames(myMovieData) <- c(\"Budget\", \"Short\", \"Year\", \"Type\")\nqplot(Type, data=myMovieData , geom=\"bar\", fill=Type)\nqplot(Type, data=myMovieData , geom=\"bar\", fill=factor(Short))\nqplot(Type, data=myMovieData , geom=\"bar\", fill=factor(Short),position = \"stack\")\nqplot(Type, data=myMovieData , geom=\"bar\", fill=factor(Short),position = \"dodge\")\nqplot(Type, data=myMovieData , geom=\"bar\", fill=factor(Short),position = \"fill\")\nqplot(Type,Budget, data=myMovieData, geom=\"boxplot\",alpha=I(0.4))\nmyMovieData <- na.omit(myMovieData)\nstr(myMovieData)\nfactor(I(0.5))\nqplot(Type,Budget, data=myMovieData, geom=\"boxplot\",alpha=I(0.4),log = \"y\")\nqplot(Type,Budget, data=myMovieData, geom=c(\"boxplot\",\"point\"),alpha=I(0.4),log = \"y\")\nqplot(Type,Budget, data=myMovieData, geom=c(\"boxplot\",\"jitter\"),alpha=I(0.4),log = \"n\")\n\nqplot(dose, len, data=ToothGrowth, geom=\"point\")\nqplot(dose, len, data=ToothGrowth, geom=\"point\",col=supp)\nqplot(dose, len, data=ToothGrowth, geom=\"point\",facets  =.~supp)\nqplot(dose, len, data=ToothGrowth, geom=c(\"point\",\"smooth\"),facets  =.~supp,se=F)\nstr(economics)\nqplot(date, unemploy, data=economics, geom=\"line\")\nqplot(Year, Type, data=myMovieData, size=Budget)\n###############\n",
+    "created" : 1443103825843.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "439598844",
+    "id" : "B995DDBC",
+    "lastKnownWriteTime" : 1443103840,
+    "path" : "~/Documents/bivni_msu/bivni-2/ggplot2_lev1/examples-chapter2.R",
+    "project_path" : "examples-chapter2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
