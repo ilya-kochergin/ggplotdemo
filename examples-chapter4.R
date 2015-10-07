@@ -36,10 +36,7 @@ ggplot(data=ToothGrowth, aes(x=dose, y=len, col=supp)) +
   stat_smooth(data = subset(ToothGrowth, supp =="VC"),method="lm") +
   facet_grid(.~supp)  
 ## Advanced aes-mapping 
-# p 118 
-cont <-
-  data.frame(y=c(1:20,(1:20)^1.5,(1:20)^2),
-             x=1:20,group=rep(c(1,2,3),each=20))
+
 #### Data represented as points
 ggplot(data=cont, aes(x=x, y=y, col=factor(group))) + geom_point()
 ggplot(data=cont, aes(x=x, y=y,
@@ -78,7 +75,6 @@ ggplot(data=iris,
   geom_histogram()
 
 
-dist <- data.frame(value=rnorm(10000, 1:4), group=1:4)
 
 ggplot(dist, aes(x=group, y=value,
                  color=group)) +
@@ -110,4 +106,53 @@ ggplot(dist, aes(x=group, y=value,
     geom_text(aes(x=median(x),y=80),label="Median",hjust=1) +
     geom_text(aes(x=median(x),y=80,label=round(median(x),
                                                digit=3)),hjust=-0.5)
+  
+  
+  #p 132 Add text and reference lines with facets
+  
+  
+  ggplot(dist, aes(x=value, fill=as.factor(group))) +
+    geom_histogram(alpha=0.5) +
+    geom_vline(data = subset(dist, group
+                             =="1"), aes(xintercept=median(value)), color="black",
+               linetype="dashed", size=1) +
+    geom_text(data = subset(dist, group
+                            =="1"),aes(x=median(value),y=350,label=round(median(value),
+                                                                         digit=3)),hjust=-0.2) +
+    facet_grid(.~group)
+  
+  myColours <- scales::hue_pal()(4)
+  
+  ggplot(dist, aes(x=value, fill=as.factor(group))) +
+    geom_histogram(alpha=0.5)+
+    ### Facet 1
+    geom_vline(data = subset(dist, group ==1),
+               aes(xintercept=median(value)), color=myColours[1], linetype="dashed",
+               size=1.5)+geom_text(data = subset(dist, group
+                                                 ==1),aes(x=median(value),y=350,label=round(median(value),
+                                                                                            digit=3)),hjust=-0.2)+
+    ### Facet 2
+    geom_vline(data = subset(dist, group==2),
+               aes(xintercept=median(value)), color=myColours[2], linetype="dashed",
+               size=1.5)+
+    geom_text(data = subset(dist, group
+                            ==2),aes(x=median(value),y=350,label=round(median(value),
+                                                                       digit=3)),hjust=-0.2)+
+    ### Facet 3
+    geom_vline(data = subset(dist, group==3),
+               aes(xintercept=median(value)), color=myColours[3], linetype="dashed",
+               size=1.5)+geom_text(data = subset(dist, group
+                                                 ==3),aes(x=median(value),y=350,label=round(median(value),
+                                                                                            digit=3)),hjust=-0.2)+
+    ### Facet 4
+    geom_vline(data = subset(dist, group==4),
+               aes(xintercept=median(value)), color=myColours[4], linetype="dashed",
+               size=1.5)+geom_text(data = subset(dist, group
+                                                 ==4),aes(x=median(value),y=350,label=round(median(value),
+                                                                                            digit=3)),hjust=-0.2)+facet_grid(.~group)
+  # polar coords
+  
+  ggplot(data=myMovieData,
+         aes(x=factor(1),fill=factor(Type))) +
+    geom_bar(width = 1) + coord_polar(theta = "y")
   
