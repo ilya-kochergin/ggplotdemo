@@ -26,7 +26,8 @@ summary(myMovieData)
 set.seed(1234)
 x <- data.frame(x=rnorm(1000))
 
-dist <- data.frame(value=rnorm(10000, 1:4), group=1:4)
+# dist <- data.frame(value=rnorm(10000, 1:4), group=1:4)
+dist <- data.frame(value=rnorm(10000, 1:4), group=factor(1:4))
 
 # p 118 
 cont <-
