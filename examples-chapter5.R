@@ -33,6 +33,11 @@ myBoxplot+scale_fill_hue()
 myScatter <- ggplot(data=cont, aes(x=x, y=y,
                                    col=factor(group))) + geom_point()
 myScatter + scale_y_log10()
+
+myScatter + scale_y_sqrt()
+
+myScatter + scale_y_reverse()
+
 myScatter + coord_trans(y="log10")
 # p 147 
 myScatter <- ggplot(data=cont, aes(x=x, y=y,

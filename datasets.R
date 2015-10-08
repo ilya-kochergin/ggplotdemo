@@ -1,3 +1,5 @@
+require(ggplot2)
+
 d1 <-data.frame(movies[movies$Action==1, c("budget", "Short",
                                            "year")])
 d1$Type <- "Animation"
@@ -35,4 +37,37 @@ cont <-
              x=1:20,group=rep(c(1,2,3),each=20))
 
 
+sin5func  <-  data.frame(x=seq(from=0,to=5*pi,length.out = 10000))
+sin5func$y  <-  sin(5*sin5func$x)
+
+ggplot(data=sin5func,aes(x=x,y=y))+geom_line()+coord_polar()
+
+
+
+ggplot(x, aes(x=x)) +
+  geom_histogram(alpha=0.5) +
+  geom_vline(aes(xintercept=median(x)), color="red", linetype="dashed",
+             size=1) +
+  geom_hline(aes(yintercept=50), col="black", linetype="solid") +
+  geom_text(aes(x=median(x),y=80),label="Median",hjust=1) +
+  geom_text(aes(x=median(x),y=80,label=round(median(x),                                
+          
+                                             
+                                             
+                                             digit=3)),hjust=-0.5)
+
+
+
+
+ggplot(x, aes(x=x)) +
+  geom_histogram(alpha=0.5) +
+  geom_vline(aes(xintercept=median(x)), color="red",linetype="dashed",
+             size=1) +
+  geom_hline(aes(yintercept=50), col="black",linetype="solid") +
+  geom_text(aes(x=median(x),y=80),label="Median",hjust=1) + geom_text(aes(x
+                                                                          =median(x),y=80,label=round(median(x)
+                                                                                                      , digit=3)),hjust=-0.5) +
+  annotate("rect", xmin = quantile(x$x, probs = 0.25), xmax = quantile(x$x,
+                                                                       probs = 0.75), ymin = 0, ymax = 100,
+           alpha = .2, fill="blue")
 
