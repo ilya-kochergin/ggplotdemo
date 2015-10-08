@@ -34,10 +34,18 @@ myScatter <- ggplot(data=cont, aes(x=x, y=y,
                                    col=factor(group))) + geom_point()
 myScatter + scale_y_log10()
 myScatter + coord_trans(y="log10")
-
+# p 147 
+myScatter <- ggplot(data=cont, aes(x=x, y=y,
+                                   col=factor(group))) + geom_point()
+myScatter + scale_y_log10()
+myScatter + coord_trans(y="log10")
+myScatter + coord_trans(y="identity")
+myScatter + coord_trans(y="sqrt")
 
 
 myBoxplot2 <- ggplot(subset(dist,group=="1"),
                      aes(x=group, y=value, fill=group)) + geom_boxplot()
 myBoxplot2 + scale_x_discrete(breaks=NULL) +
   xlab("Distribution of variable 1")
+
+
